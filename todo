@@ -1,10 +1,14 @@
 
 
-1. generate recommendations, map those
-2. add those to playlist on click.
+1. generate recommendations
+    2 data sets?
+2. map those
+3. add those to playlist on click.
 
 
 Other tasks:
+
+
 
 figure out login/server stuff
 
@@ -12,4 +16,4 @@ playlist viewer
 change axis
 point viewer (to remove songs)
 update recommendations
-
+song viewer
