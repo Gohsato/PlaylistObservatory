@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import TrackGraph from './graph/TrackGraph'
+import SongVisualizer from './visualizer/SongVisualizer'
 import './App.css';
 
-import {spotifyApi} from './index';
+import { spotifyApi } from './index';
 
 class App extends Component {
   constructor() {
@@ -15,7 +15,8 @@ class App extends Component {
     }
     this.state = {
       loggedIn: token ? true : false,
-      page: 0
+      page: 0,
+
     }
 
   }
@@ -36,12 +37,14 @@ class App extends Component {
 
 
 
+
   render() {
     return (
       <div className="App">
         {!this.state.loggedIn ?
           <a href='http://localhost:8888'> Login to Spotify </a> :
-          <TrackGraph/>}
+          <SongVisualizer/>}
+
       </div>
     );
   }
