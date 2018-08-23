@@ -1,0 +1,11 @@
+.TrackHoverDetail{
+    background-color: white;
+    box-shadow: 4px;
+}
+
+.TrackHoverDetail h1{
+    font-size: 25px;
+}
+.TrackHoverDetail h2{
+    font-size: 20px;
+}

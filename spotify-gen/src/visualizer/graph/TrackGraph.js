@@ -1,124 +1,112 @@
 import React, { Component } from 'react';
-import { VictoryTheme, VictoryScatter, VictoryZoomContainer, VictoryChart, VictoryAxis, VictoryLabel } from 'victory';
-import { addSongToPlaylist, getGraphData } from '../../api/spotify-controller';
+import { VictoryAxis, VictoryChart, VictoryLabel, VictoryScatter, VictoryTheme, VictoryTooltip, VictoryZoomContainer } from 'victory';
 import "../../App.css";
+import TrackHoverDetails from './TrackHoverDetails';
+
 
 class TrackGraph extends Component {
     constructor() {
         super();
         this.state = {
-            // name: this.props.playlistName,
-            playlistId: "2CHjVfKc0piQZcnZzYRMTP",
-            graphData: undefined,
-        }
-        this.addSong = this.addSong.bind(this);
-        this.showSong = this.showSong.bind(this);
-
-    }
-    componentDidMount() {
-        getGraphData(this.state.playlistId)
-            .then((response) => {
-                this.setState({
-                    graphData: {
-                        playlistData: {
-                            tracks: response.playlist,
-                        },
-                        recommendData: {
-                            tracks: response.recommended,
-                        }
-                    }
-                });
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+            externalMutations: undefined
+        };
+        this.setSelected = this.setSelected.bind(this);
     }
 
-    addSong(song, index) {
-        this.showSong(song);
-        addSongToPlaylist(song.uri, this.state.playlistId)
-            .then((response) => {
-                this.setState((prevState) => {
-                    prevState.graphData.recommendData.tracks.splice(index, 1)
-                    return {
-                        graphData: {
-                            recommendData: {
-                                tracks: prevState.graphData.recommendData.tracks
-                            },
-                            playlistData: {
-                                tracks: response
-                            }
-                        }
-                    };
-                });
-            });
-
+    createEventHandler(clicked,callback){
+        return(
+            {
+                childName: ["playlist", "recommended"],
+                target: ["data"],
+                eventKey: "all",
+                mutation: (point) => {
+                    return (clicked && point.datum.id === clicked.datum.id) ?
+                        ({ style: Object.assign({}, point.style, { fill: "gold" }) }) :
+                        ({ style: undefined });
+                },
+                callback: callback,
+            }
+        )
     }
 
-    showSong(song) {
-        console.log(song.name + " - " + song.artists[0].name)
+
+    removeMutation() {
+        this.setState({
+          externalMutations: undefined
+        });
+      }
+
+    setSelected(clicked) {
+        this.setState({
+            externalMutations:[
+                this.createEventHandler(clicked,this.removeMutation.bind(this))
+            ]
+        })
     }
 
     renderGraph() {
-        let widthRatio = 1.5
+
         return (
-        <VictoryChart
-            theme={VictoryTheme.material}
-            domain={{ x: [0, 100], y: [0, 100] }}
-            containerComponent={<VictoryZoomContainer zoomDomain={{ x: [0, 100], y: [0, 100] }} />}
-            // animate={{ duration: 5000, easing: "bounce" }}
-            style={{ parent: { maxWidth: window.innerHeight, border: "1px solid #ccc" } }}
-            width={500}
-            height={500}
-        >
-            <VictoryAxis label={this.props.dataFields.xAxis.name} axisLabelComponent={<VictoryLabel dy={20} />} />
-            <VictoryAxis label={this.props.dataFields.yAxis.name} axisLabelComponent={<VictoryLabel dy={-20} />} dependentAxis />
-
-            <VictoryScatter
-                size={7}
-                data={this.state.graphData.playlistData.tracks}
-                x={this.props.dataFields.xAxis.dataFunction}
-                y={this.props.dataFields.yAxis.dataFunction}
+            <VictoryChart
+                externalEventMutations={this.state.externalMutations}
+                theme={VictoryTheme.material}
+                domain={{ x: [0, 100], y: [0, 100] }}
+                containerComponent={<VictoryZoomContainer zoomDomain={{ x: [0, 100], y: [0, 100] }} />}
+                // animate={{ duration: 5000, easing: "bounce" }}
+                style={{ parent: { maxWidth: window.innerHeight, border: "1px solid #ccc" } }}
+                width={500}
+                height={500}
                 events={[
                     {
+                        childName: ["playlist", "recommended"],
                         target: "data",
                         eventHandlers: {
-                            onClick: (_, props) => {
-                                this.showSong(props.datum, props.index);
+                            onClick: (_, clicked) => {
+                                
+                                return [
+                                    this.createEventHandler(clicked,this.props.onPointClick(clicked))
+
+                                ]
                             }
                         }
                     }
                 ]}
-            />
+            >
 
-            <VictoryScatter
-                size={7}
-                data={this.state.graphData.recommendData.tracks}
-                x={this.props.dataFields.xAxis.dataFunction}
-                y={this.props.dataFields.yAxis.dataFunction}
-                style={{
-                    data: {
-                        fill: "tomato"
-                    }
-                }}
-                events={[
-                    {
-                        target: "data",
-                        eventHandlers: {
-                            onClick: (_, props) => {
-                                this.addSong(props.datum, props.index);
-                            }
+                <VictoryAxis label={this.props.dataFields.xAxis.name} axisLabelComponent={<VictoryLabel dy={20} />} />
+                <VictoryAxis label={this.props.dataFields.yAxis.name} axisLabelComponent={<VictoryLabel dy={-20} />} dependentAxis />
+
+                <VictoryScatter
+                    name="playlist"
+                    size={10}
+                    data={this.props.graphData.playlistTracks}
+                    x={this.props.dataFields.xAxis.dataFunction}
+                    y={this.props.dataFields.yAxis.dataFunction}
+                    labels={(d) => ""}
+                    labelComponent={<VictoryTooltip flyoutComponent={<TrackHoverDetails />} />}
+                />
+
+                <VictoryScatter
+                    name="recommended"
+                    size={7}
+                    data={this.props.graphData.recommendTracks}
+                    x={this.props.dataFields.xAxis.dataFunction}
+                    y={this.props.dataFields.yAxis.dataFunction}
+                    labels={(d) => ""}
+                    labelComponent={<VictoryTooltip flyoutComponent={<TrackHoverDetails />} />}
+                    style={{
+                        data: {
+                            fill: "tomato"
                         }
-                    }
-                ]}
-            />
-        </VictoryChart>);
+                    }}
+                />
+            </VictoryChart>);
     }
 
     render() {
         return (
             <div>
-                {this.state.graphData ?
+                {this.props.graphData ?
                     this.renderGraph() :
                     <p>no playlist</p>}
 

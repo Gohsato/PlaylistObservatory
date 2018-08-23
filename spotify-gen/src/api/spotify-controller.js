@@ -46,3 +46,9 @@ export async function addSongToPlaylist(songs, playlist) {
     await spotifyApi.addTracksToPlaylist(userId, playlist, [songs]);
     return await getPlaylist(userId,playlist);
 }
+
+export async function removeSongFromPlaylist(songs,playlist){
+    let userId = (await spotifyApi.getMe()).id;
+    await spotifyApi.removeTracksFromPlaylist(userId, playlist, [songs]);
+    return await getPlaylist(userId,playlist);
+}

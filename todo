@@ -1,20 +1,18 @@
 
 
-1. pan
-2. zoom
-3. view axis
-4. make parameters and axis modifiable
+
+Before refactor:
+> song details panel
 
 
 
-Other tasks:
 
+afterrefactor:
 
-
+change playlist/ select playlist
+make ui nice
 figure out login/server stuff
 
-playlist viewer
-change axis
-point viewer (to remove songs)
-update recommendations
-song viewer
+now playing
+improve recommendations seed sample 
+figure out better id for event
