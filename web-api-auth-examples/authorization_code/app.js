@@ -12,10 +12,11 @@ var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
-
+var path = require('path');
 var client_id = 'accd4118969e4826ada0f73545eb0852'; // Your client id
 var client_secret = '84c5b4009d7040f1a8252d1520668048'; // Your secret
 var redirect_uri = 'http://localhost:8888/callback/'; // Your redirect uri
+
 
 /**
  * Generates a random string containing numbers and letters
@@ -36,9 +37,22 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
-app.use(express.static(__dirname + '/public'))
-  .use(cors())
-  .use(cookieParser());
+
+
+// app.use(express.static(__dirname + '/public'))
+  // .use(cors())
+  // .use(cookieParser());
+
+  // if (process.env.NODE_ENV === 'production') {
+    // Serve any static files
+app.use(express.static(path.join(__dirname, '/build')))
+  .use(cookieParser())
+  .use(cors());
+// // Handle React routing, return all requests to React app
+// app.get('/app', (req, res)=> {
+//   res.sendFile(path.join(__dirname, '/build', 'index.html'));
+// });
+  // }
 
 app.get('/login', function (req, res) {
 
@@ -46,7 +60,7 @@ app.get('/login', function (req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email playlist-modify-private';
+  var scope = 'user-read-private user-read-email playlist-modify-private playlist-read-private';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -92,17 +106,6 @@ app.get('/callback', function (req, res) {
         var access_token = body.access_token,
           refresh_token = body.refresh_token;
 
-        var options = {
-          url: 'https://api.spotify.com/v1/me',
-          headers: { 'Authorization': 'Bearer ' + access_token },
-          json: true
-        };
-
-        // use the access token to access the Spotify Web API
-        request.get(options, function (error, response, body) {
-          console.log(body);
-        });
-
         // we can also pass the token to the browser to make requests from there
         res.redirect('http://localhost:3000/#' +
           querystring.stringify({
@@ -142,6 +145,7 @@ app.get('/refresh_token', function (req, res) {
     }
   });
 });
+
 
 console.log('Listening on 8888');
 app.listen(8888);

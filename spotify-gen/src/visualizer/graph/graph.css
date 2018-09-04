@@ -1,11 +1,35 @@
-.TrackHoverDetail{
-    background-color: white;
+#TrackHoverDetail{
+    background-color: gray;
     box-shadow: 4px;
+    display: inline-flex;
+    flex-direction: row;
+    padding: 3px;
 }
 
-.TrackHoverDetail h1{
-    font-size: 25px;
+#TrackHoverDetail h1{
+    font: bold 24px arial;
 }
-.TrackHoverDetail h2{
-    font-size: 20px;
+#TrackHoverDetail h2{
+    font: bold 20px arial;
+}
+
+#ControlPanel{
+    /* position: absolute; */
+    z-index: 1;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+.icon{
+    display: flex;
+    /* flex-direction: row; */
+    width: 100%;
+    justify-content: space-between;
+}
+
+.dot{
+    height: 30px;
+    width: 30px;
 }

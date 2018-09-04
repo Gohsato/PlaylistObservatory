@@ -1,26 +1,20 @@
 import React, { Component } from 'react';
-import SongVisualizer from './visualizer/SongVisualizer'
 import './App.css';
-
 import { spotifyApi } from './index';
+import PlaylistSelector from './intro/PlaylistSelector';
 
-class App extends Component {
+class App extends Component { 
   constructor() {
     super();
     const params = this.getHashParams();
     const token = params.access_token;
     if (token) {
       spotifyApi.setAccessToken(token);
-
     }
     this.state = {
       loggedIn: token ? true : false,
-      page: 0,
-
     }
-
   }
-
 
 
   getHashParams() {
@@ -35,16 +29,12 @@ class App extends Component {
     return hashParams;
   }
 
-
-
-
   render() {
     return (
       <div className="App">
         {!this.state.loggedIn ?
-          <a href='http://localhost:8888'> Login to Spotify </a> :
-          <SongVisualizer/>}
-
+          <a href='http://localhost:8888/login'> Login to Spotify </a>:
+          <PlaylistSelector/>}
       </div>
     );
   }

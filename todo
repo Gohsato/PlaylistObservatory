@@ -1,18 +1,14 @@
 
 
 
-Before refactor:
-> song details panel
+doing:
+refresh token
 
+deploy?
 
+todo:
+make ui good - add legend for chart
 
-
-afterrefactor:
-
-change playlist/ select playlist
-make ui nice
-figure out login/server stuff
-
+stretch:
 now playing
-improve recommendations seed sample 
-figure out better id for event
+do login in popup
