@@ -39,20 +39,9 @@ var app = express();
 
 
 
-// app.use(express.static(__dirname + '/public'))
-  // .use(cors())
-  // .use(cookieParser());
-
-  // if (process.env.NODE_ENV === 'production') {
-    // Serve any static files
 app.use(express.static(path.join(__dirname, '/build')))
   .use(cookieParser())
   .use(cors());
-// // Handle React routing, return all requests to React app
-// app.get('/app', (req, res)=> {
-//   res.sendFile(path.join(__dirname, '/build', 'index.html'));
-// });
-  // }
 
 app.get('/login', function (req, res) {
 
@@ -145,6 +134,7 @@ app.get('/refresh_token', function (req, res) {
     }
   });
 });
+
 
 
 console.log('Listening on 8888');

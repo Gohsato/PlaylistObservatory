@@ -2,13 +2,15 @@
 
 
 doing:
-refresh token
+select from playlistviewer
 
 deploy?
 
 todo:
-make ui good - add legend for chart
 
 stretch:
+implement redux
+implement routes
+
 now playing
 do login in popup

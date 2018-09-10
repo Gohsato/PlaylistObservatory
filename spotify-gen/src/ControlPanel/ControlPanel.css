@@ -1,0 +1,36 @@
+.popover{
+    max-width:100%;
+}
+
+#Popover{
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+}
+
+#ControlPanel{
+    /* position: absolute; */
+    z-index: 1;
+}
+
+
+.graph-settings-card Button{
+    margin:3px
+}
+
+
+.icon{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.icon p{
+    margin: auto 0 auto 0;
+}
+
+.dot{
+    height: 30px;
+    width: 30px;
+}
+

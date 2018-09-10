@@ -1,39 +1,35 @@
 import React, { Component } from 'react';
+import LoginPage from './Login/LoginPage'
 import './App.css';
-import { spotifyApi } from './index';
-import PlaylistSelector from './intro/PlaylistSelector';
+import PlaylistSelector from './PlaylistSelect/PlaylistSelector';
+import { sessionStart } from './apis/login';
 
 class App extends Component { 
-  constructor() {
+  constructor(){
     super();
-    const params = this.getHashParams();
-    const token = params.access_token;
-    if (token) {
-      spotifyApi.setAccessToken(token);
-    }
+    const refreshId = sessionStart();
     this.state = {
-      loggedIn: token ? true : false,
+      refreshId: refreshId,
+      loggedIn: refreshId?true:false,
+    }
+    this.login = this.login.bind(this);
+  }
+
+  componentWillUnmount(){
+    if(this.state.refreshId){
+      clearInterval(this.state.refreshId);
     }
   }
 
-
-  getHashParams() {
-    var hashParams = {};
-    var e, r = /([^&;=]+)=?([^&;]*)/g,
-      q = window.location.hash.substring(1);
-    e = r.exec(q);
-    while (e) {
-      hashParams[e[1]] = decodeURIComponent(e[2]);
-      e = r.exec(q);
-    }
-    return hashParams;
+  login(){
+    window.location.href = 'http://localhost:8888/login';
   }
 
   render() {
     return (
       <div className="App">
         {!this.state.loggedIn ?
-          <a href='http://localhost:8888/login'> Login to Spotify </a>:
+          <LoginPage login={this.login}/>:
           <PlaylistSelector/>}
       </div>
     );
