@@ -1,5 +1,4 @@
 import React from 'react';
-import { Textfit } from 'react-textfit';
 import { Button } from 'reactstrap';
 
 
@@ -15,9 +14,9 @@ class TrackViewer extends React.Component {
             <div id="TrackViewer">
                 <div id="Track">
                     <div><img src={albumArt} style={{ height: 150 }} alt="album art" /></div>
-                    <Textfit mode="single" min={15} max={35}>
+                    <h3>
                         {name}
-                    </Textfit>
+                    </h3>
                     {isRecommendation ?
                         <Button className="OptionButton" onClick={() => this.props.addTrack(track)}>add track</Button> :
                         <Button className="OptionButton" onClick={() => this.props.removeTrack(track)}>delete</Button>}

@@ -21,5 +21,7 @@ export default function LeftBar(props){
                     exitPlaylist={props.exitPlaylist} 
                     pointSelect={props.pointSelect}/>;
         }
-        return leftSide;
+        return <div id="LeftBar">
+            {leftSide}
+        </div>;
 }

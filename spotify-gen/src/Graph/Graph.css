@@ -27,9 +27,6 @@
     flex-direction: column;
 }
 
-.leftMargin{
-    float: right;
-}
-#CornerButtons Button{
-    float: right;
+#CornerButtons > *{
+    padding: 2px;
 }

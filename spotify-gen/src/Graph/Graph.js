@@ -33,7 +33,7 @@ class Graph extends React.Component {
                         <ControlPanel dataFields={this.state.dataFields} onChange={this.setDataFields}
                             updateRecommendations={this.props.updateRecommendations} graphRef={this.props.forwardedRef} />
                     </ControlPanelPopover>
-                    <div ><Button onClick={this.props.updateRecommendations}><FaSyncAlt/></Button></div>
+                    <div><Button onClick={this.props.updateRecommendations}><FaSyncAlt/></Button></div>
                     {this.props.forwardedRef.current?
                         <div><Button onClick={this.props.forwardedRef.current.setSelected}><FaHome/></Button></div>:
                         null}

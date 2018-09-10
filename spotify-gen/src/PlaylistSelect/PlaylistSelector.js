@@ -1,10 +1,9 @@
 import React from 'react';
 import { spotifyCalls } from '../apis/spotifyHandler';
 import DashBoard from '../DashBoard/DashBoard';
-import PlaylistList from './PlaylistList'
+import PlaylistList from './PlaylistList';
+import './PlaylistSelect.css';
 
-import './PlaylistSelect.css'
-import Textfit from 'react-textfit/lib/Textfit';
 
 class PlaylistSelector extends React.Component {
     constructor() {

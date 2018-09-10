@@ -1,11 +1,7 @@
 import React from "react";
-import { Textfit } from 'react-textfit';
-import {
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Jumbotron
-} from 'reactstrap';
+import { Button, Card, CardBody, CardImg, CardText, CardTitle, Jumbotron } from 'reactstrap';
+import './PlaylistSelect.css';
 
-import './PlaylistSelect.css'
 
 function PlaylistOption(props) {
     const playlist = props.playlist;
