@@ -22,8 +22,8 @@ class App extends Component {
   }
 
   login(){
-    window.location.href = 'http://localhost:8888/login';
-    // window.location.href = '/login';
+    // window.location.href = 'http://localhost:8888/login';
+    window.location.href = '/login';
   }
 
   render() {
