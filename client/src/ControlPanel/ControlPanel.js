@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Card, CardTitle, Col, Row, Container, CardBody } from 'reactstrap';
 import './ControlPanel.css';
-import { Axis, AXIS_UNITS } from '../Graph/graphParams';
+import { Axis, AXIS_UNITS } from '../apis/graphParams';
 
 function ButtonSet(props) {
     return (

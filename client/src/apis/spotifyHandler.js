@@ -2,11 +2,11 @@ import { spotifyApi } from "..";
 export const spotifyCalls = {
 
     _userId: undefined,
-    _getUserId: async function () {
-        if (this._userId === undefined) {
-            this._userId = (await spotifyApi.getMe()).id;
-        }
-        return this._userId;
+    getUserId:async function (){
+            if (this._userId === undefined) {
+                this._userId = (await spotifyApi.getMe()).id;
+            }
+            return this._userId;
     },
 
 
@@ -21,42 +21,45 @@ export const spotifyCalls = {
     },
 
     getPlaylist: async function (playlistId) {
-        let userId = (await this._getUserId());
+        const userId = (await this.getUserId());
         let response = await spotifyApi.getPlaylist(userId, playlistId);
         let newTracks = response.tracks.items.map(x => x.track);
         await this.appendAnalysis(newTracks);
         return newTracks;
     },
 
-    getRecommendations: async function (playlistId) {
-        //https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
-        function shuffle(array) {
-            let counter = array.length;
-
-            // While there are elements in the array
-            while (counter > 0) {
-                // Pick a random index
-                let index = Math.floor(Math.random() * counter);
-
-                // Decrease counter by 1
-                counter--;
-
-                // And swap the last element with it
-                let temp = array[counter];
-                array[counter] = array[index];
-                array[index] = temp;
+    _getSeeds: async function (playlistId) {
+            //https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
+            function shuffle(array) {
+                let counter = array.length;
+                while (counter > 0) {
+                    let index = Math.floor(Math.random() * counter);
+                    counter--;
+                    let temp = array[counter];
+                    array[counter] = array[index];
+                    array[index] = temp;
+                }
+                return array;
             }
+            const userId = (await this.getUserId());
+            let tracks = (await spotifyApi.getPlaylist(userId, playlistId)).tracks;
+            if(tracks.total===0){
+                const options = {
+                    limit:5,
+                    time_range:"medium_term"
+                }
+                tracks = await spotifyApi.getMyTopTracks(options);
+            }
+            let seeds = tracks.items.map(x => x.track?x.track.id:x.id);
+            shuffle(seeds);
+            return seeds.slice(0, 5);
+    },
 
-            return array;
-        }
-
-        let userId = (await this._getUserId());
-        let response = await spotifyApi.getPlaylist(userId, playlistId)
-        let seeds = response.tracks.items.map(x => x.track.id);
-        shuffle(seeds);
+    getRecommendations: async function (playlistId) {
+        const seeds = await this._getSeeds(playlistId);
         let options = {
             limit: 10,
-            seed_tracks: seeds.slice(0, 5),
+            seed_tracks: seeds,
             min_popularity: 50,
         }
         let recommendationsResponse = await spotifyApi.getRecommendations(options);
@@ -71,20 +74,20 @@ export const spotifyCalls = {
     },
 
     addTrackToPlaylist: async function (songs, playlistId) {
-        let userId = (await this._getUserId());
+        const userId = (await this.getUserId());
         await spotifyApi.addTracksToPlaylist(userId, playlistId, [songs]);
         return await this.getPlaylist(playlistId);
     },
 
     removeTrackFromPlaylist: async function (songs, playlistId) {
-        let userId = (await this._getUserId());
+        const userId = (await this.getUserId());
         await spotifyApi.removeTracksFromPlaylist(userId, playlistId, [songs]);
         return await this.getPlaylist(playlistId);
     },
 
     getUserPlaylists: async function () {
         let playlists = await spotifyApi.getUserPlaylists();
-        let userId = (await this._getUserId());
+        const userId = (await this.getUserId());
         playlists.items = playlists.items.filter((playlist) => playlist.owner.id === userId);
         return playlists
     }

@@ -42,9 +42,10 @@ var app = express();
 
 
 
-app.use(express.static(path.join(__dirname, '/build')))
-  .use(cookieParser())
+app.use(cookieParser())
   .use(cors());
+
+app.use('/',express.static(path.join(__dirname, '/build')));
 
 app.get('/login', function (req, res) {
 
@@ -52,7 +53,7 @@ app.get('/login', function (req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email playlist-modify-private playlist-read-private';
+  var scope = 'user-read-private user-read-email playlist-modify-private playlist-read-private user-top-read';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -99,8 +100,8 @@ app.get('/callback', function (req, res) {
           refresh_token = body.refresh_token;
 
         // we can also pass the token to the browser to make requests from there
-        // res.redirect('http://localhost:3000/#' +
-        res.redirect('/#' +
+        res.redirect('http://localhost:3000/#' +
+        // res.redirect('/#' +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token
@@ -141,5 +142,5 @@ app.get('/refresh_token', function (req, res) {
 
 
 
-console.log('Listening on 8888');
-app.listen(8888);
+console.log('Listening on '+process.env.PORT);
+app.listen(process.env.PORT);

@@ -3,7 +3,7 @@ import { FaHome, FaSyncAlt, FaWrench } from 'react-icons/fa';
 import { Button } from 'reactstrap';
 import ControlPanel from '../ControlPanel/ControlPanel';
 import ControlPanelPopover from '../ControlPanel/ControlPanelPopover';
-import { Axis, AXIS_UNITS } from './graphParams';
+import { Axis, AXIS_UNITS } from '../apis/graphParams';
 import TrackGraph from './TrackGraph';
 
 
