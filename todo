@@ -2,11 +2,12 @@
 
 
 doing:
-select from playlistviewer
-
-deploy?
+make deployment easier
+i.e client/App.js and server/app.js redirects 
+fill in write up i.e. intro, helper descriptions
 
 todo:
+get domain name
 
 stretch:
 implement redux

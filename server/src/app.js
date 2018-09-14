@@ -100,8 +100,13 @@ app.get('/callback', function (req, res) {
           refresh_token = body.refresh_token;
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('http://localhost:3000/#' +
-        // res.redirect('/#' +
+        let link;
+        if(process.env.NODE_ENV==='development'){
+          link = 'http://localhost:3000/#';
+        }else{
+          link = '/*#';
+        }
+        res.redirect(link +
           querystring.stringify({
             access_token: access_token,
             refresh_token: refresh_token

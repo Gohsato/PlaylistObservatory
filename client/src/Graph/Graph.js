@@ -1,10 +1,8 @@
 import React from "react";
-import { FaHome, FaSyncAlt, FaWrench } from 'react-icons/fa';
-import { Button } from 'reactstrap';
-import ControlPanel from '../ControlPanel/ControlPanel';
-import ControlPanelPopover from '../ControlPanel/ControlPanelPopover';
 import { Axis, AXIS_UNITS } from '../apis/graphParams';
+import CornerButtons from './CornerButtons';
 import TrackGraph from './TrackGraph';
+import HelpAlert from "./HelpAlert";
 
 
 class Graph extends React.Component {
@@ -28,21 +26,15 @@ class Graph extends React.Component {
     render() {
         return (
             <div className="fillheight">
-                <div id="CornerButtons">
-                    <ControlPanelPopover title={<FaWrench/>}>
-                        <ControlPanel dataFields={this.state.dataFields} onChange={this.setDataFields}
-                            updateRecommendations={this.props.updateRecommendations} graphRef={this.props.forwardedRef} />
-                    </ControlPanelPopover>
-                    <div><Button onClick={this.props.updateRecommendations}><FaSyncAlt/></Button></div>
-                    {this.props.forwardedRef.current?
-                        <div><Button onClick={this.props.forwardedRef.current.setSelected}><FaHome/></Button></div>:
-                        null}
-                </div>
+                <CornerButtons dataFields={this.state.dataFields} setDataFields={this.setDataFields}
+                    updateRecommendations={this.props.updateRecommendations} forwardedRef={this.props.forwardedRef}
+                />
                 <TrackGraph dataFields={this.state.dataFields}
                     ref={this.props.forwardedRef}
                     graphData={this.props.graphData}
-                    onPointClick={this.props.pointClick} 
-                    startDomain={{ x: [0, 100], y: [0, 100]}}/>
+                    onPointClick={this.props.pointClick}
+                    startDomain={{ x: [0, 100], y: [0, 100] }} />
+                <div className="alert"><HelpAlert/></div>
             </div>
         )
     }

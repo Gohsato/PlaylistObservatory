@@ -30,8 +30,10 @@ function getHashParams() {
 }
 
 function refreshToken(refreshToken) {
-    // let url = "http://localhost:8888/refresh_token/?refresh_token=" + refreshToken;
-    let url = "/refresh_token/?refresh_token=" + refreshToken;
+    const url=
+        (process.env.NODE_ENV==='development')?
+            "http://localhost:8888/refresh_token/?refresh_token=" + refreshToken:
+            "/refresh_token/?refresh_token=" + refreshToken;
     fetch(url)
         .then((promise) => {
             promise.json().then((res) => {

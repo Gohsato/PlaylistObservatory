@@ -1,4 +1,8 @@
 
+#PlaylistList{
+    margin: 0;
+}
+
 #PlaylistDisplay{
     margin: 0 auto 0 auto;
 
@@ -13,8 +17,14 @@
 }
 
 .noImage{
-    height: 150px;
-    width: 150px;
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .width{

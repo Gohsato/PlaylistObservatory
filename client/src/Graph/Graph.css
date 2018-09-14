@@ -1,16 +1,22 @@
 #TrackHoverDetail{
-    background-color: gray;
+    background-color: #2E2E2E;
     box-shadow: 4px;
     display: inline-flex;
     flex-direction: row;
     padding: 3px;
+
+    border-radius: 5px;
 }
 
 #TrackHoverDetail h1{
-    font: bold 24px arial;
+    font: bold 18px arial;
+    color: white;
+    padding: 5px
 }
 #TrackHoverDetail h2{
-    font: bold 20px arial;
+    font: bold 15px arial;
+    color: white;
+    padding: 5px
 }
 
 .hidden{
@@ -29,4 +35,26 @@
 
 #CornerButtons > *{
     padding: 2px;
+}
+
+.alert{
+    position: absolute;
+    bottom: 2px;
+    right:0;
+
+    justify-items: end;
+    width:100%;
+}
+
+.helpAlert{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 0 auto;
+}
+
+.infoButton{
+    display:flex;
+    justify-content: flex-end;
 }

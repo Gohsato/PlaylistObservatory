@@ -31,7 +31,8 @@ class TrackHoverDetails extends React.Component{
   }
 
   render(){
-      const { x, y, datum } = this.props;
+      let { x, y} = this.props;
+      const {datum} = this.props;
       const imageLink = datum.album.images[0].url
   
       const trackName = datum.name;
@@ -41,9 +42,10 @@ class TrackHoverDetails extends React.Component{
   
   
       if (datum._x > 40) {
-        width = Math.max(getTextWidth(trackName, "bold 24px arial"), getTextWidth(artistName, "bold 20px arial")) + 3 + 100;
+        x=x-15;
+        width = Math.max(getTextWidth(trackName, "bold 18px arial"), getTextWidth(artistName, "bold 15px arial")) + 3 + 100;
         if (width > 400) {
-          width = 400;
+          width = 400-50;
         }
       }
   

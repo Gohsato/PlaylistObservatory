@@ -12,23 +12,25 @@ class PlaylistViewer extends React.Component {
             return (<div>no playlist</div>)
         }
         const playlist = this.props.graphData.playlistTracks
+        console.log(playlist)
         return (
             <div id="PlaylistView">
-                    <div id="PlaylistViewTitle">
-                        Playlist:
-                    <Textfit mode="single" max={28}>
-                            {this.props.playlistName}
-                        </Textfit>
-                    </div>
-                    <Card id="PlaylistTracks">
-                        <CardBody>
-                            {playlist.map((track, i) =>
-                                < ListTrack key={track.name + i} track={track} removeSong={this.props.removeSong}
-                                    pointSelect={this.props.pointSelect} i={i} />)
-                            }
-                        </CardBody>
-                    </Card>
-                    <Button id="ExitPlaylist" onClick={this.props.exitPlaylist}>exit playlist</Button>
+                <div id="PlaylistViewTitle">
+                    Playlist:
+                    <h2 className="ellipse" title={this.props.playlistName}>
+                        {this.props.playlistName}
+                    </h2>
+                </div>
+                <Card id="PlaylistTracks">
+                    <CardBody>
+                        {playlist.map((track, i) =>
+                            < ListTrack key={track.name + i} track={track} removeSong={this.props.removeSong}
+                                pointSelect={this.props.pointSelect} i={i} />)
+                        }
+                        {playlist.length===0 ? <p>no tracks in this playlist... yet</p>:null}
+                    </CardBody>
+                </Card>
+                <Button id="ExitPlaylist" onClick={this.props.exitPlaylist}>exit playlist</Button>
             </div>
         );
     }

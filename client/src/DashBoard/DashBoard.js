@@ -44,16 +44,16 @@ class DashBoard extends Component {
 
     updateRecommendations() {
         spotifyCalls.getRecommendations(this.props.playlist.id)
-        .then((response) => {
-            let playlist = this.state.graphData.playlistTracks;
-            this.setState({ 
-                graphData: { 
-                    recommendTracks: response,
-                    playlistTracks: playlist
-                } 
-            })
-            this.pointSelect();
-            
+            .then((response) => {
+                let playlist = this.state.graphData.playlistTracks;
+                this.setState({
+                    graphData: {
+                        recommendTracks: response,
+                        playlistTracks: playlist
+                    }
+                })
+                this.pointSelect();
+
             });
     }
 
@@ -83,12 +83,12 @@ class DashBoard extends Component {
         })
     }
 
-    pointSelect(selectedSong=undefined) {
+    pointSelect(selectedSong = undefined) {
         this.setState({
             selected: selectedSong
         });
         if (this.graphRef.current) {
-            const id = selectedSong?selectedSong.id:undefined;
+            const id = selectedSong ? selectedSong.id : undefined;
             this.graphRef.current.setSelected(id);
         }
     }
@@ -100,14 +100,15 @@ class DashBoard extends Component {
             <Row className="align-items-center fillheight" noGutters>
                 <Col xs="3" className="fillheight">
                     <LeftBar selected={this.state.selected} pointSelect={this.pointSelect} removeTrack={this.removeTrack}
-                        addTrack={this.addTrack} playlist={this.props.playlist} graphData={this.state.graphData} 
+                        addTrack={this.addTrack} playlist={this.props.playlist} graphData={this.state.graphData}
                         exitPlaylist={this.props.exitPlaylist} />
                 </Col>
                 <Col xs="9" className="fillheight">
-                    <Graph forwardedRef={this.graphRef} graphData={this.state.graphData} pointClick={this.pointClick} 
-                    updateRecommendations={this.updateRecommendations}/>
+                    <Graph forwardedRef={this.graphRef} graphData={this.state.graphData} pointClick={this.pointClick}
+                        updateRecommendations={this.updateRecommendations} />
                 </Col>
             </Row>
+
         )
     }
 
