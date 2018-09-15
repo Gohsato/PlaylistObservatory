@@ -2,7 +2,7 @@ import { spotifyApi } from '..';
 import queryString from 'querystring';
 export function sessionStart() {
 
-    const time = 1000*1;
+    const time = 1000*60*55;
 
     if(sessionStorage.access_token){
         spotifyApi.setAccessToken(sessionStorage.access_token);
