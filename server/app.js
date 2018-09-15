@@ -104,7 +104,7 @@ app.get('/callback', function (req, res) {
         if(process.env.NODE_ENV==='development'){
           link = 'http://localhost:3000/#';
         }else{
-          link = '/*#';
+          link = '/#';
         }
         res.redirect(link +
           querystring.stringify({
