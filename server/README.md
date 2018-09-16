@@ -1,35 +1,18 @@
-# Spotify Accounts Authentication Examples
+##To Start 
+1. 'npm install'
+2. Create a Spotify app at developer.spotify.com
+Here's a handy guide that I used (a lot): https://medium.com/@jonnykalambay/now-playing-using-spotifys-awesome-api-with-react-7db8173a7b13
+1. Make an .env file in '/server/' directory that looks like this
+    CLIENT_ID = <clientID>
+    CLIENT_SECRET = <clientSecret>
+    REDIRECT_URI = http://localhost:8888/callback/
+    NODE_ENV = development
+    PORT=8888
+2. run 'node ./app.js'
 
-This project contains basic demos showing the different OAuth 2.0 flows for [authenticating against the Spotify Web API](https://developer.spotify.com/web-api/authorization-guide/).
 
-These examples cover:
 
-* Authorization Code flow
-* Client Credentials flow
-* Implicit Grant flow
 
-## Installation
 
-These examples run on Node.js. On [its website](http://www.nodejs.org/download/) you can find instructions on how to install it. You can also follow [this gist](https://gist.github.com/isaacs/579814) for a quick and easy way to install Node.js and npm.
-
-Once installed, clone the repository and install its dependencies running:
-
-    $ npm install
-
-### Using your own credentials
-You will need to register your app and get your own credentials from the Spotify for Developers Dashboard.
-
-To do so, go to [your Spotify for Developers Dashboard](https://beta.developer.spotify.com/dashboard) and create your application. For the examples, we registered these Redirect URIs:
-
-* http://localhost:8888 (needed for the implicit grant flow)
-* http://localhost:8888/callback
-
-Once you have created your app, replace the `client_id`, `redirect_uri` and `client_secret` in the examples with the ones you get from My Applications.
-
-## Running the examples
-In order to run the different examples, open the folder with the name of the flow you want to try out, and run its `app.js` file. For instance, to run the Authorization Code example do:
-
-    $ cd authorization_code
-    $ node app.js
-
-Then, open `http://localhost:8888` in a browser.
+The server is basically the implementation provided here:
+https://developer.spotify.com/web-api/authorization-guide/

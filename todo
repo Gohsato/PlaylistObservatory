@@ -2,16 +2,11 @@
 
 
 doing:
-make deployment easier
-i.e client/App.js and server/app.js redirects 
-fill in write up i.e. intro, helper descriptions
-
-todo:
-get domain name
+    tidy up around here
 
 stretch:
-implement redux
-implement routes
+    implement redux?
+    implement routes?
 
-now playing
-do login in popup
+    now playing
+    do login in popup
