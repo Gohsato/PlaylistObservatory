@@ -44,9 +44,6 @@ class TrackHoverDetails extends React.Component{
       if (datum._x > 40) {
         x=x-15;
         width = Math.max(getTextWidth(trackName, "bold 18px arial"), getTextWidth(artistName, "bold 15px arial")) + 3 + 100;
-        if (width > 400) {
-          width = 400-50;
-        }
       }
   
   

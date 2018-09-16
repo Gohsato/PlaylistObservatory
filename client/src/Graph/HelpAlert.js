@@ -29,13 +29,14 @@ class HelpModal extends React.Component {
                     <ModalHeader toggle={this.toggle}>A Quick Tour</ModalHeader>
                     <ModalBody>
                         <p>Click the <FaWrench /> icon to view the legend and the graph settings.</p>
-                        <p>The <FaSyncAlt /> generates more recommendations and <FaHome /> centers the graph.</p>
+                        <p>The <FaSyncAlt /> button generates more recommendations</p>
+                        <p>The <FaHome /> buttons centers the graph.</p>
 
                         <p>Click on the dots to add/remove songs from the playlist.</p>
                     </ModalBody>
-                    {/* <ModalFooter>
-            <Button color="primary" onClick={this.toggle}>re</Button>{' '}
-          </ModalFooter> */}
+                    <ModalFooter >
+                        <p id="Creds">Made by Goh Sato <a href="https://github.com/Gohsato/PlaylistObservatory">Github Repo</a></p>
+                    </ModalFooter>
                 </Modal>
             </div>
         );
@@ -61,7 +62,7 @@ class HelpAlert extends React.Component {
         return (
             <div>
                 <Alert color="info" isOpen={this.state.visible} toggle={this.onDismiss} className="helpAlert">
-                    First time here?    <HelpModal buttonLabel="get the tour" />
+                    <div>First time here?</div>    <HelpModal buttonLabel="get the tour" />
                 </Alert>
                 {this.state.visible ? null : <HelpModal buttonLabel="?" />}
             </div>

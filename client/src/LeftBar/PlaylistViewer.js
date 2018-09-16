@@ -12,7 +12,6 @@ class PlaylistViewer extends React.Component {
             return (<div>no playlist</div>)
         }
         const playlist = this.props.graphData.playlistTracks
-        console.log(playlist)
         return (
             <div id="PlaylistView">
                 <div id="PlaylistViewTitle">

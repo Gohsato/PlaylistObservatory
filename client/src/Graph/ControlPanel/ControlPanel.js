@@ -56,9 +56,9 @@ class ControlPanel extends Component {
                     <CircleIcon title="Recommended Track" color="tomato" />
                     <CircleIcon title="Playlist Track" color="#455A64" />
                     < ButtonSet fieldName="X Axis" current={this.state.xAxis.name} onBtnClick={(btn) => this.onRadioBtnClick(btn, "xAxis")}
-                        options={[AXIS_UNITS.energy, AXIS_UNITS.danceability, AXIS_UNITS.valence]} />
+                        options={[AXIS_UNITS.energy, AXIS_UNITS.danceability, AXIS_UNITS.valence,AXIS_UNITS.acousticness]} />
                     < ButtonSet fieldName="Y Axis" current={this.state.yAxis.name} onBtnClick={(btn) => this.onRadioBtnClick(btn, "yAxis")}
-                        options={[AXIS_UNITS.energy, AXIS_UNITS.danceability, AXIS_UNITS.valence]} />
+                        options={[AXIS_UNITS.energy, AXIS_UNITS.danceability, AXIS_UNITS.valence,AXIS_UNITS.acousticness]} />
                 </Col>
             </div>
         )
