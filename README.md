@@ -6,7 +6,7 @@ Here's a live demo : http://playlistplot.xyz/
 To run this app locally:  
 1. first setup the server (More on that in the server readme).  
 1. Start the server.  
-1. Then run the client by executing (in '/client/') 'npm install' then 'npm run start'
+1. Then run the client by going into the '/client' directory and executing 'npm install' then 'npm run start'
 
 Make sure that the react app is run on localhost:3000 and the server is running on localhost:8888.
 
