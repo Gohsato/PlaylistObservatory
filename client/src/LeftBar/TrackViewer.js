@@ -13,6 +13,7 @@ class TrackViewer extends React.Component {
 
             <div id="TrackViewer">
                 <div id="Track">
+                    <h5>{isRecommendation?"Recommendation:":"Playlist Track:"}</h5>
                     <div><img src={albumArt} style={{ height: 150 }} alt="album art" /></div>
                     <h3>
                         {name}

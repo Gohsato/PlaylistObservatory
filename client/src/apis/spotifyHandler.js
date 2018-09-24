@@ -21,8 +21,7 @@ export const spotifyCalls = {
     },
 
     getPlaylist: async function (playlistId) {
-        const userId = (await this.getUserId());
-        let response = await spotifyApi.getPlaylist(userId, playlistId);
+        let response = await spotifyApi.getPlaylist(playlistId);
         let newTracks = response.tracks.items.map(x => x.track);
         await this.appendAnalysis(newTracks);
         return newTracks;
@@ -41,8 +40,7 @@ export const spotifyCalls = {
                 }
                 return array;
             }
-            const userId = (await this.getUserId());
-            let tracks = (await spotifyApi.getPlaylist(userId, playlistId)).tracks;
+            let tracks = (await spotifyApi.getPlaylist(playlistId)).tracks;
             if(tracks.total===0){
                 const options = {
                     limit:5,
@@ -74,14 +72,12 @@ export const spotifyCalls = {
     },
 
     addTrackToPlaylist: async function (songs, playlistId) {
-        const userId = (await this.getUserId());
-        await spotifyApi.addTracksToPlaylist(userId, playlistId, [songs]);
+        await spotifyApi.addTracksToPlaylist(playlistId, [songs]);
         return await this.getPlaylist(playlistId);
     },
 
     removeTrackFromPlaylist: async function (songs, playlistId) {
-        const userId = (await this.getUserId());
-        await spotifyApi.removeTracksFromPlaylist(userId, playlistId, [songs]);
+        await spotifyApi.removeTracksFromPlaylist(playlistId, [songs]);
         return await this.getPlaylist(playlistId);
     },
 

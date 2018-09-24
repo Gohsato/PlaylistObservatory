@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LoginPage from './Login/LoginPage'
+import LoginPage from './LoginPage/LoginPage'
 import './App.css';
 import PlaylistSelector from './PlaylistSelect/PlaylistSelector';
 import { sessionStart } from './apis/login';

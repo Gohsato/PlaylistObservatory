@@ -29,7 +29,7 @@ function PlaylistOption(props) {
                 <CardText>
                     {numberOfTracks} tracks
                 </CardText>
-                <Button onClick={() => props.setPlaylist(playlist)}>select</Button>
+                <Button onClick={() => {props.setPlaylist(playlist)}}>select</Button>
             </CardBody>
         </Card>
     )

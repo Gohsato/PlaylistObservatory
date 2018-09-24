@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import { Textfit } from 'react-textfit';
 import { Button, Card, CardBody } from 'reactstrap';
 import './LeftBar.css';
 import ListTrack from './ListTrack';
