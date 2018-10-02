@@ -11,13 +11,16 @@ To run this app locally:
 Make sure that the react app is run on localhost:3000 and the server is running on localhost:8888.
 
 Here's what it looks like:  
+## Change the axis 
 <p align="center">
-  To Change the axis
-<img src="demo_gifs/axis_demo.gif"  height="500">
-  </p>
+   
+  <img src="demo_gifs/axis_demo.gif"  height="500">
+</p>
+
+## Add a track  
  <p align="center">
-  And to add a track
-<img src="demo_gifs/add_demo.gif"  height="500">
+  
+  <img src="demo_gifs/add_demo.gif"  height="500">
 </p>
 
 
