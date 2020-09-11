@@ -5,8 +5,16 @@
 
 .fillheight{
     height: 100%;
+}
 
-}  
+#Header{
+    height: 5%;
+    justify-items: center;
+}
+
+.body{
+    height: 95%;
+}
 
 #Popover{
     z-index: 1;
@@ -16,3 +24,8 @@
 
 }
 
+#PlaylistViewTitle{
+    margin: auto 0 auto 0;
+    text-align: center;
+    flex: 1;
+}

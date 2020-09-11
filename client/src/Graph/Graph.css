@@ -1,3 +1,10 @@
+#Graph{
+    background-color: white;
+    border-right-style: solid;
+    border-width: 2px;
+    border-color: rgba(0,0,0,0.1);
+}
+
 #TrackHoverDetail{
     background-color: #2E2E2E;
     box-shadow: 4px;

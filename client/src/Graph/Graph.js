@@ -25,7 +25,7 @@ class Graph extends React.Component {
 
     render() {
         return (
-            <div className="fillheight">
+            <div className="fillheight" id="Graph">
                 <CornerButtons dataFields={this.state.dataFields} setDataFields={this.setDataFields}
                     updateRecommendations={this.props.updateRecommendations} forwardedRef={this.props.forwardedRef}
                 />

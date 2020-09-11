@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
-import { Col, Row } from 'reactstrap';
+import { FaChevronLeft } from 'react-icons/fa';
+import { Button, Col, Row } from 'reactstrap';
 import { spotifyCalls } from '../apis/spotifyHandler';
 import './Dashboard.css';
 import Graph from '../Graph/Graph';
@@ -97,18 +98,27 @@ class DashBoard extends Component {
     render() {
 
         return (
-            <Row className="align-items-center fillheight" noGutters>
-                <Col xs="3" className="fillheight">
-                    <LeftBar selected={this.state.selected} pointSelect={this.pointSelect} removeTrack={this.removeTrack}
-                        addTrack={this.addTrack} playlist={this.props.playlist} graphData={this.state.graphData}
-                        exitPlaylist={this.props.exitPlaylist} />
-                </Col>
-                <Col xs="9" className="fillheight">
-                    <Graph forwardedRef={this.graphRef} graphData={this.state.graphData} pointClick={this.pointClick}
-                        updateRecommendations={this.updateRecommendations} />
-                </Col>
-            </Row>
-
+            <>
+                <Row id="Header" noGutters>
+                        <Button id="ExitPlaylist" onClick={this.props.exitPlaylist}>
+                            <FaChevronLeft/> exit playlist
+                        </Button>
+                        <p id="PlaylistViewTitle">
+                            playlist: <b>{this.props.playlist.name}</b>
+                        </p>
+                </Row>
+                <Row className="align-items-center body" noGutters>
+                    <Col xs="3" className="fillheight">
+                        <LeftBar selected={this.state.selected} pointSelect={this.pointSelect} removeTrack={this.removeTrack}
+                            addTrack={this.addTrack} playlist={this.props.playlist} graphData={this.state.graphData}
+                        />
+                    </Col>
+                    <Col xs="9" className="fillheight">
+                        <Graph forwardedRef={this.graphRef} graphData={this.state.graphData} pointClick={this.pointClick}
+                            updateRecommendations={this.updateRecommendations} />
+                    </Col>
+                </Row>
+            </>
         )
     }
 

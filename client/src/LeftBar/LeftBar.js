@@ -15,10 +15,8 @@ export default function LeftBar(props){
         else {
             leftSide = 
                 <PlaylistViewer
-                    playlistName={props.playlist.name} 
                     graphData={props.graphData} 
                     removeSong={props.removeTrack} 
-                    exitPlaylist={props.exitPlaylist} 
                     pointSelect={props.pointSelect}/>;
         }
         return <div id="LeftBar">

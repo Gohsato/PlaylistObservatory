@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
-import { Button, Card, CardBody } from 'reactstrap';
+import { Card, CardBody } from 'reactstrap';
 import './LeftBar.css';
 import ListTrack from './ListTrack';
 
@@ -13,12 +13,7 @@ class PlaylistViewer extends React.Component {
         const playlist = this.props.graphData.playlistTracks
         return (
             <div id="PlaylistView">
-                <div id="PlaylistViewTitle">
-                    Playlist:
-                    <h2 className="ellipse" title={this.props.playlistName}>
-                        {this.props.playlistName}
-                    </h2>
-                </div>
+                <h4>tracks:</h4>
                 <Card id="PlaylistTracks">
                     <CardBody>
                         {playlist.map((track, i) =>
@@ -28,7 +23,6 @@ class PlaylistViewer extends React.Component {
                         {playlist.length===0 ? <p>no tracks in this playlist... yet</p>:null}
                     </CardBody>
                 </Card>
-                <Button id="ExitPlaylist" onClick={this.props.exitPlaylist}>exit playlist</Button>
             </div>
         );
     }

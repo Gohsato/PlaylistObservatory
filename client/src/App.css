@@ -1,4 +1,7 @@
 .App {
+  background-color: rgba(0,0,0,0.1);
+
   height: 100vh;
+  padding: 5px;
 }
 
