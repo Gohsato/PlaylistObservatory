@@ -13,7 +13,7 @@ class PlaylistViewer extends React.Component {
         const playlist = this.props.graphData.playlistTracks
         return (
             <div id="PlaylistView">
-                <h4>tracks:</h4>
+                <i>tracks:</i>
                 <Card id="PlaylistTracks">
                     <CardBody>
                         {playlist.map((track, i) =>

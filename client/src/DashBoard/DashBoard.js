@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 import { FaChevronLeft } from 'react-icons/fa';
 import { Button, Col, Row } from 'reactstrap';
 import { spotifyCalls } from '../apis/spotifyHandler';
-import './Dashboard.css';
 import Graph from '../Graph/Graph';
 import LeftBar from '../LeftBar/LeftBar';
+import './Dashboard.css';
+import HelpModal from './HelpModal';
 
 
 
@@ -103,9 +104,10 @@ class DashBoard extends Component {
                         <Button id="ExitPlaylist" onClick={this.props.exitPlaylist}>
                             <FaChevronLeft/> exit playlist
                         </Button>
-                        <p id="PlaylistViewTitle">
-                            playlist: <b>{this.props.playlist.name}</b>
-                        </p>
+                        <div id="PlaylistViewTitle">
+                            <i>playlist:</i> <b className="tomatoFont">{this.props.playlist.name}</b>
+                        </div>
+                        <HelpModal buttonLabel="?" />
                 </Row>
                 <Row className="align-items-center body" noGutters>
                     <Col xs="3" className="fillheight">

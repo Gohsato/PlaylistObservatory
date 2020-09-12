@@ -7,7 +7,12 @@
     height: 100%;
 }
 
+.tomatoFont{
+    color: tomato;
+}
+
 #Header{
+    padding-bottom: 5px;
     height: 5%;
     justify-items: center;
 }

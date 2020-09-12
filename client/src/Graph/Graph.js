@@ -2,7 +2,7 @@ import React from "react";
 import { Axis, AXIS_UNITS } from '../apis/graphParams';
 import CornerButtons from './CornerButtons';
 import TrackGraph from './TrackGraph';
-import HelpAlert from "./HelpAlert";
+// import HelpAlert from "./HelpAlert";
 
 
 class Graph extends React.Component {
@@ -34,7 +34,7 @@ class Graph extends React.Component {
                     graphData={this.props.graphData}
                     onPointClick={this.props.pointClick}
                     startDomain={{ x: [0, 100], y: [0, 100] }} />
-                <div className="alert"><HelpAlert/></div>
+                {/* <div className="alert"><HelpAlert/></div> */}
             </div>
         )
     }

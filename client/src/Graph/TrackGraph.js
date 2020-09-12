@@ -22,7 +22,7 @@ class TrackGraph extends Component {
                 eventKey: "all",
                 mutation: (point) => {
                     return (clickedId && point.datum.id === clickedId) ?
-                        ({ style: Object.assign({}, point.style, { fill: "gold" }) }) :
+                        ({ style: Object.assign({}, point.style, { fill: "#44ac00" }) }) :
                         ({ style: undefined });
                 },
                 callback: callback,

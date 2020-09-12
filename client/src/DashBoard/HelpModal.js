@@ -23,8 +23,8 @@ class HelpModal extends React.Component {
 
     render() {
         return (
-            <div className="infoButton">
-                <Button color="info" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+            <div >
+                <Button onClick={this.toggle}>{this.props.buttonLabel}</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>A Quick Tour</ModalHeader>
                     <ModalBody>
@@ -43,31 +43,4 @@ class HelpModal extends React.Component {
     }
 }
 
-class HelpAlert extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            visible: true
-        };
-
-        this.onDismiss = this.onDismiss.bind(this);
-    }
-
-    onDismiss() {
-        this.setState({ visible: false });
-    }
-
-    render() {
-        return (
-            <div>
-                <Alert color="info" isOpen={this.state.visible} toggle={this.onDismiss} className="helpAlert">
-                    <div>First time here?</div>    <HelpModal buttonLabel="get the tour" />
-                </Alert>
-                {this.state.visible ? null : <HelpModal buttonLabel="?" />}
-            </div>
-        );
-    }
-}
-
-export default HelpAlert;
+export default HelpModal
