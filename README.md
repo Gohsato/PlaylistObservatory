@@ -4,23 +4,29 @@ This is a web app that takes the tracks off a spotify playlist and visually maps
 <!-- Here's a live demo : http://playlistplot.xyz/ -->
 
 To run this app locally:  
-1. first setup the server (More on that in the server readme).  
-1. Start the server.  
-1. Then run the client by going into the '/client' directory and executing 'npm install' then 'npm run start'
+1. Create a Spotify Web App https://developer.spotify.com/dashboard
+2. In the app settings make sure to add `http://localhost:3000/` as a redirect
+3. Create an .env file with the following properties
+```
+REACT_APP_SPOTIFY_CLIENT_ID = <Spotify API ID from dashboard>
+REACT_APP_REDIRECT_URI = http://localhost:3000/
+```
+4. Run the client by going into the '/client' directory and executing 'npm install' then 'npm run start'
 
-Make sure that the react app is run on localhost:3000 and the server is running on localhost:8888.
+Make sure that the React app is run on localhost:3000
 
 ## Here's what it looks like  
 The gray dots are tracks already on the playlist  
 The orange dots are recommendations
 
-### Change the axis 
-  <img src="demo_gifs/axis_demo.gif"  height="500">
+<p align="center">
+<b>Change the axis </b>
+  <img src="demo_gifs/axis_demo.gif"/>
+<br>
+<b>Add/Remove a track </b>
+  <img src="demo_gifs/add_demo.gif"/>
 
-### Add a track  
-  <img src="demo_gifs/add_demo.gif"  height="500">
-
-
+</p>
 
 
 
