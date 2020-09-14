@@ -1,6 +1,4 @@
 import React from 'react';
-import { Alert } from 'reactstrap';
-
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import { FaHome, FaSyncAlt, FaWrench } from 'react-icons/fa';
