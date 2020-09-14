@@ -1,7 +1,7 @@
 # The Playlist Obeservatory
 This is a web app that takes the tracks off a spotify playlist and visually maps them in 2D space
 
-<!-- Here's a live demo : http://playlistplot.xyz/ -->
+Here's a live demo : https://gohsato.github.io/PlaylistObservatory/
 
 To run this app locally:  
 1. Create a Spotify Web App https://developer.spotify.com/dashboard
