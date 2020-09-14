@@ -1,4 +1,7 @@
-import { spotifyApi } from "..";
+import SpotifyWebApi from 'spotify-web-api-js';
+
+export const spotifyApi = new SpotifyWebApi();
+
 export const spotifyCalls = {
 
     _userId: undefined,

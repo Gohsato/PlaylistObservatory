@@ -2,38 +2,26 @@ import React, { Component } from 'react';
 import LoginPage from './LoginPage/LoginPage'
 import './App.css';
 import PlaylistSelector from './PlaylistSelect/PlaylistSelector';
-import { sessionStart } from './apis/login';
+import { sessionStart, login as spotifyLogin } from './apis/login';
 
 class App extends Component { 
   constructor(){
     super();
-    const refreshId = sessionStart();
     this.state = {
-      refreshId: refreshId,
-      loggedIn: refreshId?true:false,
+      loggedIn: false,
     }
-    this.login = this.login.bind(this);
-  }
-
-  componentWillUnmount(){
-    if(this.state.refreshId){
-      clearInterval(this.state.refreshId);
-    }
-  }
-
-  login(){
-    if(process.env.NODE_ENV==='development'){
-      window.location.href = 'http://localhost:8888/login';
-    }else{
-      window.location.href = '/login';
-    }
+    sessionStart().then((login)=>{
+      if(login){
+        this.setState({loggedIn:true});
+      }
+    })
   }
 
   render() {
     return (
       <div className="App">
         {!this.state.loggedIn ?
-          <LoginPage login={this.login}/>:
+          <LoginPage login={spotifyLogin}/>:
           <PlaylistSelector/>}
       </div>
     );
