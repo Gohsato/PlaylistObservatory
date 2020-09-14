@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/PlaylistObservatory/static/css/main.cadaca72.chunk.css",
-    "main.js": "/PlaylistObservatory/static/js/main.b56c102f.chunk.js",
-    "main.js.map": "/PlaylistObservatory/static/js/main.b56c102f.chunk.js.map",
+    "main.js": "/PlaylistObservatory/static/js/main.f5845d5d.chunk.js",
+    "main.js.map": "/PlaylistObservatory/static/js/main.f5845d5d.chunk.js.map",
     "runtime-main.js": "/PlaylistObservatory/static/js/runtime-main.7cd6c4aa.js",
     "runtime-main.js.map": "/PlaylistObservatory/static/js/runtime-main.7cd6c4aa.js.map",
     "static/css/2.d9ad5f5c.chunk.css": "/PlaylistObservatory/static/css/2.d9ad5f5c.chunk.css",
     "static/js/2.958aa31c.chunk.js": "/PlaylistObservatory/static/js/2.958aa31c.chunk.js",
     "static/js/2.958aa31c.chunk.js.map": "/PlaylistObservatory/static/js/2.958aa31c.chunk.js.map",
     "index.html": "/PlaylistObservatory/index.html",
-    "precache-manifest.b023bfd7a685882c6f12a37c7a825f7c.js": "/PlaylistObservatory/precache-manifest.b023bfd7a685882c6f12a37c7a825f7c.js",
+    "precache-manifest.6ae758d32606195fda07fa77aa52cf4b.js": "/PlaylistObservatory/precache-manifest.6ae758d32606195fda07fa77aa52cf4b.js",
     "service-worker.js": "/PlaylistObservatory/service-worker.js",
     "static/css/2.d9ad5f5c.chunk.css.map": "/PlaylistObservatory/static/css/2.d9ad5f5c.chunk.css.map",
     "static/css/main.cadaca72.chunk.css.map": "/PlaylistObservatory/static/css/main.cadaca72.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.d9ad5f5c.chunk.css",
     "static/js/2.958aa31c.chunk.js",
     "static/css/main.cadaca72.chunk.css",
-    "static/js/main.b56c102f.chunk.js"
+    "static/js/main.f5845d5d.chunk.js"
   ]
 }
