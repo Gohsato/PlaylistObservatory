@@ -1,17 +1,17 @@
-# The Playlist Obeservatory
-This is a web app that takes the tracks off a spotify playlist and visually maps them in 2D space
+# The Playlist Observatory
+This is a web app that visually maps the tracks of a Spotify playlist in 2D space.
 
 Here's a live demo : https://gohsato.github.io/PlaylistObservatory/
 
 To run this app locally:  
 1. Create a Spotify Web App https://developer.spotify.com/dashboard
-2. In the app settings make sure to add `http://localhost:3000/` as a redirect
-3. Create an .env file with the following properties
+2. In the app settings make sure to add `http://localhost:3000/` as a redirect link
+3. Create an `.env` file with the following properties
 ```
 REACT_APP_SPOTIFY_CLIENT_ID = <Spotify API ID from dashboard>
 REACT_APP_REDIRECT_URI = http://localhost:3000/
 ```
-4. Run the client by going into the '/client' directory and executing 'npm install' then 'npm run start'
+1. Run the client by executing 'npm install' then 'npm run start'
 
 Make sure that the React app is run on localhost:3000
 
