@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "824075614bda9a8e4e7184d557e39aa3",
+    "revision": "3cb949231f8abe39f00dcf0ba2eb1934",
     "url": "/PlaylistObservatory/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/PlaylistObservatory/static/css/2.d9ad5f5c.chunk.css"
   },
   {
-    "revision": "518be59d3ed28e451131",
-    "url": "/PlaylistObservatory/static/css/main.cadaca72.chunk.css"
+    "revision": "a5d07512986aab33eebd",
+    "url": "/PlaylistObservatory/static/css/main.b61b20f6.chunk.css"
   },
   {
     "revision": "4156460dc80e905cdf81",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/PlaylistObservatory/static/js/2.958aa31c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "518be59d3ed28e451131",
-    "url": "/PlaylistObservatory/static/js/main.f5845d5d.chunk.js"
+    "revision": "a5d07512986aab33eebd",
+    "url": "/PlaylistObservatory/static/js/main.82e79bd9.chunk.js"
   },
   {
     "revision": "c9384e6ddd70d507bbe4",
